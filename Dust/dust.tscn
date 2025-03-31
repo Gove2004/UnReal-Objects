@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxwclrye3qf38"]
+
+[ext_resource type="Script" path="res://Dust/dust.gd" id="1_gclqd"]
+[ext_resource type="Texture2D" uid="uid://dwhxdx8i5kbhu" path="res://Dust/dust.png" id="1_th10b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs7s3"]
+atlas = ExtResource("1_th10b")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7sb1"]
+atlas = ExtResource("1_th10b")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f33p"]
+atlas = ExtResource("1_th10b")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7agaf"]
+atlas = ExtResource("1_th10b")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0xfw"]
+atlas = ExtResource("1_th10b")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifyj1"]
+atlas = ExtResource("1_th10b")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3w6by"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs7s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7sb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f33p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7agaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0xfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifyj1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtadb"]
+size = Vector2(32, 32)
+
+[node name="Dust" type="Node2D" node_paths=PackedStringArray("w_ray", "a_ray", "s_ray", "d_ray", "area")]
+script = ExtResource("1_gclqd")
+w_ray = NodePath("Rays/W")
+a_ray = NodePath("Rays/A")
+s_ray = NodePath("Rays/S")
+d_ray = NodePath("Rays/D")
+area = NodePath("Area2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.607843, 0, 0, 1)
+scale = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_3w6by")
+autoplay = "default"
+frame_progress = 0.92052
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="W" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, -64)
+
+[node name="A" type="RayCast2D" parent="Rays"]
+target_position = Vector2(-64, 0)
+
+[node name="S" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, 64)
+
+[node name="D" type="RayCast2D" parent="Rays"]
+target_position = Vector2(64, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gtadb")

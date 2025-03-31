@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://crxdxdq8c0dmk"]
+
+[ext_resource type="Script" path="res://TipArea/tip_area.gd" id="1_acw0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4s5f"]
+size = Vector2(32, 32)
+
+[node name="TipArea" type="Area2D"]
+script = ExtResource("1_acw0s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d4s5f")

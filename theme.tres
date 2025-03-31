@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://3q6d70kkh0e7"]
+
+[ext_resource type="FontFile" uid="uid://ci2v8j82f2rau" path="res://VonwaonBitmap-16px.ttf" id="1_s8o44"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pl57p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e5j63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6pqe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dhcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skrxg"]
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_s8o44")
+Button/styles/disabled = SubResource("StyleBoxEmpty_pl57p")
+Button/styles/focus = SubResource("StyleBoxEmpty_e5j63")
+Button/styles/hover = SubResource("StyleBoxEmpty_n6pqe")
+Button/styles/normal = SubResource("StyleBoxEmpty_5dhcl")
+Button/styles/pressed = SubResource("StyleBoxEmpty_skrxg")
+Label/constants/outline_size = 5

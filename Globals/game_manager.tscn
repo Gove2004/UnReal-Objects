@@ -1,0 +1,22 @@
+[gd_scene load_steps=9 format=3 uid="uid://shbxtgps0xst"]
+
+[ext_resource type="Script" path="res://Globals/GameManager.gd" id="1_gm0rq"]
+[ext_resource type="Script" path="res://Actions/Action.gd" id="2_0yyc8"]
+[ext_resource type="Resource" uid="uid://dh3ooo3eoc230" path="res://Actions/Tres/A.tres" id="3_ituar"]
+[ext_resource type="Resource" uid="uid://ejhwgostq7ld" path="res://Actions/Tres/D.tres" id="4_redq2"]
+[ext_resource type="Resource" uid="uid://yvt8t1073ba5" path="res://Actions/Tres/S.tres" id="5_mmny8"]
+[ext_resource type="Resource" uid="uid://b6t15w18dwmii" path="res://Actions/Tres/W.tres" id="6_ksye3"]
+[ext_resource type="AudioStream" uid="uid://ctrnakal8fxl5" path="res://Globals/bgm.mp3" id="7_lsoqw"]
+[ext_resource type="AudioStream" uid="uid://c2bxpexmet32d" path="res://Globals/button.mp3" id="8_00j2a"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("globalSFXbutton")]
+script = ExtResource("1_gm0rq")
+debug_action_array = Array[ExtResource("2_0yyc8")]([ExtResource("3_ituar"), ExtResource("4_redq2"), ExtResource("5_mmny8"), ExtResource("6_ksye3")])
+globalSFXbutton = NodePath("GlobalSFXbutton")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lsoqw")
+autoplay = true
+
+[node name="GlobalSFXbutton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_00j2a")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://dr7ql57jvklid"]
+
+[ext_resource type="Script" path="res://Actions/Action.gd" id="1_gqg68"]
+
+[resource]
+script = ExtResource("1_gqg68")
+letter = "I"
+commands = Array[String](["S", "S", "W", "W"])
+description = "Down+2
+Up+2"
+Cdescription = "向下2格
+向上2格"

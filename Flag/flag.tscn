@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://chlmxb0ow6c1e"]
+
+[ext_resource type="Script" path="res://Flag/flag.gd" id="1_2yisg"]
+[ext_resource type="Texture2D" uid="uid://ddxgs3p7t15bd" path="res://Flag/Flag.png" id="1_641mo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0eik"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_achuj"]
+resource_name = "Float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flag:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.317584, -0.373656, -0.317584, -0.279253, -0.317584]
+}
+
+[sub_resource type="Animation" id="Animation_4vcel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flag:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.317584]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7i4l"]
+_data = {
+"Float": SubResource("Animation_achuj"),
+"RESET": SubResource("Animation_4vcel")
+}
+
+[node name="Flag" type="Node2D" node_paths=PackedStringArray("area")]
+position = Vector2(376, 320)
+script = ExtResource("1_2yisg")
+area = NodePath("Area2D")
+
+[node name="Flag" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(-8.32852, 13.991)
+rotation = -0.317584
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_641mo")
+offset = Vector2(163.757, -163.771)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-3.44312, 4.64734)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x0eik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y7i4l")
+}
+autoplay = "Float"

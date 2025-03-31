@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcfdmddnycroj"]
+
+[ext_resource type="Script" path="res://Menus/GameMenu/game_menu.gd" id="1_4hhr0"]
+[ext_resource type="PackedScene" uid="uid://vcvvr1jy77qo" path="res://Menus/GameMenu/action_icon.tscn" id="1_vd6ba"]
+[ext_resource type="Resource" uid="uid://dh3ooo3eoc230" path="res://Actions/Tres/A.tres" id="2_umn77"]
+[ext_resource type="PackedScene" uid="uid://dqkogcp0m4j6i" path="res://Player/player.tscn" id="3_v1ion"]
+[ext_resource type="Resource" uid="uid://ejhwgostq7ld" path="res://Actions/Tres/D.tres" id="3_vm3yj"]
+[ext_resource type="Resource" uid="uid://yvt8t1073ba5" path="res://Actions/Tres/S.tres" id="4_qg3t4"]
+[ext_resource type="Resource" uid="uid://b6t15w18dwmii" path="res://Actions/Tres/W.tres" id="5_nrf85"]
+[ext_resource type="Resource" uid="uid://bswhmst1tdldu" path="res://Actions/Tres/Q.tres" id="6_6wy4n"]
+[ext_resource type="AudioStream" uid="uid://113erjwgw11" path="res://Globals/tip.ogg" id="9_hlqwy"]
+
+[node name="GameMenu" type="Node2D" node_paths=PackedStringArray("action_list", "restart_button", "exit_button", "tip_panel", "tip_text", "tip_audioplayer")]
+script = ExtResource("1_4hhr0")
+action_list = NodePath("UI/ActionList")
+restart_button = NodePath("UI/ReStart")
+exit_button = NodePath("UI/ExitLevel")
+tip_panel = NodePath("UI/Tip")
+tip_text = NodePath("UI/Tip/Text")
+tip_audioplayer = NodePath("AudioStreamPlayer")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ActionList" type="HBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ActionIcon1" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("2_umn77")
+
+[node name="ActionIcon2" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("3_vm3yj")
+
+[node name="ActionIcon3" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("4_qg3t4")
+
+[node name="ActionIcon4" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("5_nrf85")
+
+[node name="ActionIcon5" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("6_6wy4n")
+
+[node name="ActionIcon6" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("6_6wy4n")
+
+[node name="ActionIcon7" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("6_6wy4n")
+
+[node name="ActionIcon8" parent="UI/ActionList" instance=ExtResource("1_vd6ba")]
+layout_mode = 2
+action = ExtResource("6_6wy4n")
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ReStart" type="Button" parent="UI"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 32
+text = "ReStart"
+
+[node name="ExitLevel" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="Tip" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="UI/Tip"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "This is a tip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("3_v1ion")]
+z_index = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hlqwy")

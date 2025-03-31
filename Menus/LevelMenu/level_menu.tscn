@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://boeojxmihmtwp"]
+
+[ext_resource type="PackedScene" uid="uid://b47gvdw00ud7f" path="res://Menus/LevelMenu/level_icon.tscn" id="1_cdnld"]
+[ext_resource type="Script" path="res://Menus/LevelMenu/level_menu.gd" id="1_v2fug"]
+[ext_resource type="Shader" path="res://Menus/uiBG.gdshader" id="2_0ccmc"]
+[ext_resource type="Texture2D" uid="uid://roptpp3tgr3i" path="res://Objects/Cube/Cube.webp" id="4_0qv5u"]
+[ext_resource type="Texture2D" uid="uid://cychc5pcyxvv8" path="res://Objects/Triangle/Triangle.png" id="4_bsfcs"]
+[ext_resource type="Texture2D" uid="uid://b5sl12wfxxs84" path="res://Objects/Stair/Stair.webp" id="5_ffi3n"]
+[ext_resource type="Texture2D" uid="uid://lcj88tbs2ucu" path="res://Objects/Fork/Fork.png" id="6_31k2l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmnpa"]
+shader = ExtResource("2_0ccmc")
+shader_parameter/pixel_scale = 64.0
+
+[sub_resource type="Curve" id="Curve_j6pkv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qwk8l"]
+curve = SubResource("Curve_j6pkv")
+
+[node name="LevelMenu" type="Node2D" node_paths=PackedStringArray("level_icon_array")]
+script = ExtResource("1_v2fug")
+level_icon_array = [NodePath("UI/LevelGrids/Triangle"), NodePath("UI/LevelGrids/Cube"), NodePath("UI/LevelGrids/Stair"), NodePath("UI/LevelGrids/Fork")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BG" type="TextureRect" parent="UI"]
+material = SubResource("ShaderMaterial_hmnpa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_qwk8l")
+
+[node name="LevelGrids" type="GridContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Triangle" parent="UI/LevelGrids" instance=ExtResource("1_cdnld")]
+layout_mode = 2
+Name = "Triangle"
+CName = "三角"
+texture = ExtResource("4_bsfcs")
+level_index = 1
+
+[node name="Cube" parent="UI/LevelGrids" instance=ExtResource("1_cdnld")]
+layout_mode = 2
+Name = "Cube"
+CName = "立方"
+texture = ExtResource("4_0qv5u")
+level_index = 2
+
+[node name="Stair" parent="UI/LevelGrids" instance=ExtResource("1_cdnld")]
+layout_mode = 2
+Name = "Stair"
+CName = "阶梯"
+texture = ExtResource("5_ffi3n")
+level_index = 3
+
+[node name="Fork" parent="UI/LevelGrids" instance=ExtResource("1_cdnld")]
+layout_mode = 2
+Name = "Fork"
+CName = "音叉"
+texture = ExtResource("6_31k2l")
+level_index = 4
