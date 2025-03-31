@@ -59,6 +59,7 @@ func ray_check(direction: Vector2i) -> bool:
 
 func on_body_entered(body: Node2D) -> void:
 	if body == GameManager.player:
-		GameManager.game_menu.show_tip("The devil has killed you", Color.RED, 2.5)
+		var string = "恶魔杀死了你" if GameManager.language == "简体中文" else "The devil has killed you"
+		GameManager.game_menu.show_tip(string, Color.RED, 2.5)
 		await get_tree().create_timer(2.5).timeout
 		GameManager.lose()

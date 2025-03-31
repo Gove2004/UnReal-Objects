@@ -7,4 +7,4 @@ script = ExtResource("1_5pb32")
 letter = "W"
 commands = Array[String](["W"])
 description = "Up+1"
-Cdescription = "向上2格"
+Cdescription = "向上1格"
